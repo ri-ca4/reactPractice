@@ -1,12 +1,11 @@
-import logo from './logo.svg';
+
 import './App.css';
-import ClassBasedComponent from './components/ClassBasedComponent';
-import FunctionBasedComponent from './components/FunctionBasedComponent';
+import ApiPracticeComponent from './components/ApiPracticeComponent';
 
 function App() {
   return (
     <div>
-      <ClassBasedComponent/>
+      <ApiPracticeComponent/>
     </div>
   );
 }
