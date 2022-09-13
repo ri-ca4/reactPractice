@@ -5,7 +5,8 @@ class ClassBasedComponent extends Component {
     
     state = {
         //write state properties here
-        count : 0 //initial value
+        count : 0, //initial value
+        flag  : false
     }
 
     // constructor(props){
@@ -28,6 +29,23 @@ class ClassBasedComponent extends Component {
         })
     }
 
+    componentDidMount(){
+        console.log("component mounted")
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        console.log(prevState, this.state)
+        if (prevState && prevState.count !== this.state.count && this.state.count === 10){
+            this.setState({
+                flag : true
+            })
+        }
+    }
+
+    componentWillUnmount(){
+        //cleanup before component is destroyed
+    }
+
     render(){
         console.log(this.state)
         return(
@@ -35,6 +53,9 @@ class ClassBasedComponent extends Component {
                 <button onClick={this.handleClick}>Click</button>
                 {
                     this.state.count === 5 && "count is 5"
+                }
+                {
+                    this.state.flag && <p>flag is true</p>
                 }
             </div>
         )
