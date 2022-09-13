@@ -11,9 +11,9 @@ const Child= ()=> {
 }
 
 function FunctionBasedComponent(){
-
-    const parentComponentHandler = ()=>{
-        console.log('hello from parent component')
+    
+    const getValueFromChildComponent = (value)=>{
+        console.log(value)
     }
 
 
@@ -21,7 +21,7 @@ function FunctionBasedComponent(){
         <div>
             <Child/>
             This is a function based component
-            <PropExample parentComponentHandler={parentComponentHandler} flag = {true} data = 'data as prop'/>
+            <PropExample getValueFromChildComponent={getValueFromChildComponent}/>
         </div>
     )
 }

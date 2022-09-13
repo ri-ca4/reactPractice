@@ -5,15 +5,16 @@ import React from "react";
 
 
 const PropExample = (props)=>{
-    console.log(props);
-    const {flag , data, parentComponentHandler} = props;
+
+    const {getValueFromChildComponent} = props;
+    const handleClick = ()=> {
+        const count = 5;
+        getValueFromChildComponent(count + 1);
+    }
 
     return(
         <div>
-            {
-                flag ? data: 'flag is false'
-            }
-            <button onClick={parentComponentHandler}>click</button>
+            <button onClick={handleClick}>Click</button>
         </div>
     )
 }
