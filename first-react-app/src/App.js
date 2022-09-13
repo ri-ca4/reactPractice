@@ -1,11 +1,10 @@
-
 import './App.css';
-import ApiPracticeComponent from './components/ApiPracticeComponent';
+import HooksPracticeComponent from './components/HooksPracticeComponent';
 
 function App() {
   return (
-    <div>
-      <ApiPracticeComponent/>
+    <div className="App">
+      <HooksPracticeComponent />
     </div>
   );
 }
