@@ -1,17 +1,15 @@
 import { createContext } from 'react';
 import './App.css';
-import HooksPracticeComponent from './components/HooksPracticeComponent';
+import MovieList from './components/movieList';
+import Search from './components/search';
 
-export const Context = createContext('light')
-console.log(Context)
 
 function App() {
   return (
-    <Context.Provider value="purple">
-      <div className="App">
-          <HooksPracticeComponent/>
-      </div>
-    </Context.Provider>
+    <div>
+      <Search />
+      <MovieList />
+    </div>
   );
 }
 
