@@ -1,23 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import Test from './components/Text';
+import { useState } from 'react';
 
 function App() {
+  const [isToggled, setIsToggled] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={()=>{setIsToggled(!isToggled)}}>Toggle</button>
+      { isToggled && <Test />}
+      { isToggled ? <p>the value is true</p> : <p>the value is false</p>}
     </div>
   );
 }
