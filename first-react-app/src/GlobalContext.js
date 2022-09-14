@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
 
@@ -15,6 +16,11 @@ const GlobalState = ({children})=> {
     const [movieList, setMovieList] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    useEffect(()=>{
+        const getDataFromStorage = JSON.parse(localStorage.getItem('movieList'));
+        if(getDataFromStorage && getDataFromStorage.length > 0) setMovieList(getDataFromStorage)
+    },[])
+
     const handleOnChange = (event)=>{
         console.log(event.target.value);
         setSearchParam(event.target.value)
@@ -28,6 +34,7 @@ const GlobalState = ({children})=> {
         console.log(data);
         if(data) {
             setMovieList(data.Search)
+            localStorage.setItem('movieList', JSON.stringify(data.Search))
             setLoading(false)
             setSearchParam('')
         }
