@@ -6,10 +6,11 @@
 
 
 import React from "react";
-import { useContext } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { Context } from "../App";
+import { useReducer } from "react";
+// import { useContext } from "react";
+// import { useEffect } from "react";
+// import { useState } from "react";
+// import { Context } from "../App";
 
 const HooksPracticeComponent = ()=>{
 
@@ -37,12 +38,36 @@ const HooksPracticeComponent = ()=>{
     // }), )//=>componentwillunmount
 
 
-    const getValueFromContext = useContext(Context)
-    console.log(getValueFromContext)
+    // const getValueFromContext = useContext(Context)
+    // console.log(getValueFromContext)
+
+    const initialState = {
+        flag : false
+    }
+
+    const reducer = (state, action) => {
+        switch (action.type) {
+            case 'TOGGLE_BUTTON':
+                console.log(state);
+                return {
+                    ...state,
+                    flag : !state.flag
+                };
+
+            default:
+                return state;
+        }
+    }
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+
 
     return(
+            // <div>
+            //     <button style={{backgroundColor : getValueFromContext}}>Click</button>
+            // </div>
             <div>
-                <button style={{backgroundColor : getValueFromContext}}>Click</button>
+                <button onClick={()=> dispatch({type: "TOGGLE_BUTTON"})}>Toggle</button>
             </div>
     )
 }
